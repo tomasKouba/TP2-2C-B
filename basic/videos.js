@@ -26,8 +26,17 @@ const str = `<ul>
 // Tip: convertir a un array de objetos
 // Tip2: split
 
-const videos = str.split("</li>");
+let videos = str.split("</li>");
 
-
-
-//videos.filter(video => );
+videos = videos
+.filter(video => video.includes('Flexbox Video'))
+.map(video => video.substring(video.indexOf("=")+2, video.indexOf(">")-1));  
+videos.shift();
+//console.log(videos);
+let totalSegundos = 0;
+videos.forEach(video => {
+    tiempo = video.split(":");
+    //console.log(tiempo[0], tiempo[1]);
+    totalSegundos += parseInt(tiempo[0]*60) + parseInt(tiempo[1]);
+});
+console.log(totalSegundos);
