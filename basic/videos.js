@@ -30,8 +30,7 @@ let videos = str.split("</li>");
 
 videos = videos
 .filter(video => video.includes('Flexbox Video'))
-.map(video => video.substring(video.indexOf("=")+2, video.indexOf(">")-1));  
-videos.shift();
+.map(video => video.substring(video.indexOf("=")+2, video.indexOf('">')));  
 //console.log(videos);
 let totalSegundos = 0;
 videos.forEach(video => {
