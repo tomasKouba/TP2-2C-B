@@ -7,12 +7,19 @@ function saveThePrisioner(n, m, s) {
     }
     //console.log(prisioneros);
     //console.log(caramelos);
-    return (s + caramelos - 1);
+    let result = s + caramelos - 1;
+    if (result > prisioneros.length) {
+        result = result - prisioneros.length
+    }    
+    return (result);
 }
 
 console.log(saveThePrisioner(5, 2, 1));
 console.log(saveThePrisioner(7, 19, 2));
 console.log(saveThePrisioner(3, 7, 3));
+console.log(saveThePrisioner(5, 2, 5));
+
+console.log(saveThePrisioner(10,2,10));
 
 console.log(saveThePrisioner(1,1,1) === 1);
 console.log(saveThePrisioner(5,2,1) === 2);
