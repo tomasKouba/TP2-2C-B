@@ -31,7 +31,7 @@ let videos = str.split("</li>");
 videos = videos
 .filter(video => video.includes('Flexbox Video'))
 .map(video => video.substring(video.indexOf("=")+2, video.indexOf('">')));  
-//console.log(videos);
+console.log(videos);
 let totalSegundos = 0;
 videos.forEach(video => {
     tiempo = video.split(":");
@@ -39,3 +39,38 @@ videos.forEach(video => {
     totalSegundos += parseInt(tiempo[0]*60) + parseInt(tiempo[1]);
 });
 console.log(totalSegundos);
+
+
+// Otra manera de resolverlo
+
+function getVideos(str) {
+    return str
+      .replace('<ul>','')
+      .replace('</ul>','')
+      .split('</li>')
+      .slice(0,-1)
+      .map(video => (
+        {
+        min: parseInt(video
+             .split('"')[1]
+             .split(':')[0]),
+        seg: parseInt(video
+             .split('"')[1]
+             .split(':')[1]),
+        tipo: video.split('>')[1]
+        }
+      ))
+      ;
+}
+
+function getTotalSegundos(videos, tipo){
+  let totalSegundos = 0;
+  videos
+    .filter(video => video.tipo === tipo)
+    .forEach(video => {
+      totalSegundos += (video.min*60) + video.seg;
+    });
+    return totalSegundos;
+}
+
+console.log(getTotalSegundos(getVideos(str),"Flexbox Video"));
