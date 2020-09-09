@@ -3,8 +3,26 @@ const IMPOSSIBLE = 'Impossible';
 
 // Complete the organizingContainers function below.
 function organizingContainers(container) {
-    
-    //return resp;
+    result = POSSIBLE;
+    let acumFila = 0;
+    let acumColumna = 0;
+    let terminar = false;
+    while (result === POSSIBLE && terminar === false) {
+        for (let f = 0; f < container.length; f++){
+            for (let c = 0; c < container[f].length; c++) {
+                acumFila += container[f][c];
+                acumColumna += container[c][f]                
+            }
+            console.log(acumFila);
+            console.log(acumColumna);
+            if (acumFila != acumColumna){result = IMPOSSIBLE}
+            acumFila = 0;
+            acumColumna = 0;
+        }
+        terminar = true;
+    }
+
+    return result;
 }
 
 //Tips: cada fila te dice la cantidad de pelotitas y se tiene que mantener
@@ -27,10 +45,10 @@ console.log(organizingContainers(
 ) == POSSIBLE);
 
 console.log(organizingContainers(
-    [997612619, 934920795, 998879231, 999926463],
+    [[997612619, 934920795, 998879231, 999926463],
     [960369681, 997828120, 999792735, 979622676],
     [999013654, 998634077, 997988323, 958769423],
-    [997409523, 999301350, 940952923, 993020546]
+    [997409523, 999301350, 940952923, 993020546]]
 )== POSSIBLE);
 
 console.log(organizingContainers(
