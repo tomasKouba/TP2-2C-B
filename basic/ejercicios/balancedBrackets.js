@@ -36,3 +36,28 @@ console.log(isBalanced('{{[[(())]]}}{}()') == 'YES');
 
 // Tips: Pilas
 // Tips: Remplazo de cadenas
+
+
+
+// Otra manera de resolverlo
+
+function isBalanced2(s) {
+    let aux = -1;
+    
+    while (s.length != 0) {
+        aux = s.length;
+        s = s.replace("()","");
+        s = s.replace("[]","");
+        s = s.replace("{}","");
+        
+        if (aux == s.length) return "NO";
+    }
+
+    return "YES";
+
+}
+
+console.log(isBalanced2('{[()]}') == 'YES');
+console.log(isBalanced2('{[(])}') == 'NO');
+console.log(isBalanced2('{{[[(())]]}}') == 'YES');
+console.log(isBalanced2('{{[[(())]]}}{}()') == 'YES');

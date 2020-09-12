@@ -39,6 +39,16 @@
    "first": "Juan",
    "last": "Perez",
    "year": 1978
+  },
+  {
+   "first": "Rene",
+   "last": "Favaloro",
+   "year": 1923
+  },
+  {
+   "first": "Ladislao",
+   "last": "Biro",
+   "year": 1899
   }
  ]
 }
